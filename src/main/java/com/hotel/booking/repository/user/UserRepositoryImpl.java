@@ -22,12 +22,12 @@ public class UserRepositoryImpl implements UserRepository{
     }
 
     @Override
-    public User saveBooking(User user) {
+    public User saveUser(User user) {
         return userMongoRepository.save(user);
     }
 
     @Override
-    public Boolean updateHotel(String id, User user) {
+    public Boolean updateUser(String id, User user) {
         User foundUser = findUserById(id);
         if(foundUser != null){
             foundUser.setFirstName(user.getFirstName());
@@ -44,7 +44,7 @@ public class UserRepositoryImpl implements UserRepository{
     }
 
     @Override
-    public Boolean deleteHotel(String id) {
+    public Boolean deleteUser(String id) {
         User foundUser = findUserById(id);
         if(foundUser != null){
             userMongoRepository.deleteById(id);
