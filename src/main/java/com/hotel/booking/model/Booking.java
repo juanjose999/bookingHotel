@@ -1,12 +1,29 @@
 package com.hotel.booking.model;
 
-import java.time.LocalDateTime;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-public class Booking {
-    private String idHotel;
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+@Data
+@AllArgsConstructor
+@Document(collection = "booking")
+public class Booking implements Serializable {
+    private static final long serialVersionUID = 1L;
+    @Id
     private String idBooking;
-    private LocalDateTime registrationStartDate;
-    private LocalDateTime registrationEndDate;
+    private String nameHotel;
+    private LocalDate registrationStartDate;
+    private LocalDate registrationEndDate;
     private String idUser;
 
+    public Booking(String nameHotel, LocalDate registrationStartDate, LocalDate registrationEndDate, String idUser) {
+        this.nameHotel = nameHotel;
+        this.registrationStartDate = registrationStartDate;
+        this.registrationEndDate = registrationEndDate;
+        this.idUser = idUser;
+    }
 }
