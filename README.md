@@ -1,5 +1,7 @@
 <h1 align="center"> API BOOKINGS </h1>
 ![Model diagram of how the classes in the database are related.](https://github.com/juanjose999/bookingHotel/raw/main/hotel.png)
+
+
 ## Overview
 
 The Booking API is designed to store hotel reservations in a MongoDB database. Each reservation is associated with a user and a hotel name. The API is currently functional and can be tested using Postman.
