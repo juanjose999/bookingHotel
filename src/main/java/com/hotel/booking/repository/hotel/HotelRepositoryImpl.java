@@ -6,23 +6,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
+
 @Repository
 public class HotelRepositoryImpl implements HotelRepository {
+    private final HotelMongoRepository hotelMongoRepository;
+
     @Autowired
-    private HotelMongoRepository hotelMongoRepository;
+    public HotelRepositoryImpl(HotelMongoRepository hotelMongoRepository) {
+        this.hotelMongoRepository = hotelMongoRepository;
+    }
 
     @Override
-    public List<Hotel> getAllHotel() {
+    public List<Hotel> getAllHotels() {
         return hotelMongoRepository.findAll();
     }
 
     @Override
     public Hotel findHotelById(String idHotel) {
-        return hotelMongoRepository.findById(idHotel).get();
+        return hotelMongoRepository.findById(idHotel).orElse(null);
     }
 
     @Override
-    public Hotel saveBooking(Hotel hotel) {
+    public Hotel saveHotel(Hotel hotel) {
         return hotelMongoRepository.save(hotel);
     }
 

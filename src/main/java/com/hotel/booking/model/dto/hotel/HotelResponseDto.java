@@ -7,6 +7,4 @@ import lombok.Data;
 @AllArgsConstructor
 public class HotelResponseDto {
     private String nameHotel;
-
-
 }

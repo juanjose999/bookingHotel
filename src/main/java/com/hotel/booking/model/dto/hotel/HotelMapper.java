@@ -4,13 +4,13 @@ import com.hotel.booking.model.Hotel;
 
 public class HotelMapper {
 
-    public static HotelResponseDto hotel_To_HotelResponseDto(Hotel hotel){
+    public static HotelResponseDto hotelToHotelResponseDto(Hotel hotel){
         return new HotelResponseDto(
                 hotel.getNameHotel()
         );
     }
 
-    public static Hotel hotelDto_To_Hotel (HotelDto hotelDto){
+    public static Hotel hotelDtoToHotel (HotelDto hotelDto){
         return new Hotel(
                 hotelDto.getNameHotel()
         );

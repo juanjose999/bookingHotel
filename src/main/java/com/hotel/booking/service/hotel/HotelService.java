@@ -7,9 +7,9 @@ import com.hotel.booking.model.dto.hotel.HotelResponseDto;
 import java.util.List;
 
 public interface HotelService {
-    List<HotelResponseDto> getAllHotel();
+    List<HotelResponseDto> getAllHotels();
     HotelResponseDto findHotelById(String idHotel);
-    HotelResponseDto saveBooking(HotelDto hotelDto);
+    HotelResponseDto saveHotel(HotelDto hotelDto);
     Boolean updateHotel(String id, HotelDto hotelDto);
-    Boolean deleteHotel(String id);
+    Boolean deleteHotel(String idHotel);
 }

@@ -3,13 +3,14 @@ package com.hotel.booking.model.dto.user;
 import com.hotel.booking.model.StatusBooking;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 public class UserDto {
-    private String idUser;
     private String firstName;
     private String lastName;
     private String phoneCel;

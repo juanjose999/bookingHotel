@@ -8,26 +8,29 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public class UserRepositoryImpl implements UserRepository{
+    private final UserMongoRepository userMongoRepository;
     @Autowired
-    private UserMongoRepository userMongoRepository;
+    public UserRepositoryImpl(UserMongoRepository userMongoRepository){
+        this.userMongoRepository = userMongoRepository;
+    }
 
     @Override
-    public List<User> getAllUser() {
+    public List<User> getAllUsers() {
         return userMongoRepository.findAll();
     }
 
     @Override
     public User findUserById(String idUser) {
-        return userMongoRepository.findById(idUser).get();
+        return userMongoRepository.findById(idUser).orElse(null);
     }
 
     @Override
-    public User saveBooking(User user) {
+    public User saveUser(User user) {
         return userMongoRepository.save(user);
     }
 
     @Override
-    public Boolean updateHotel(String id, User user) {
+    public Boolean updateUser(String id, User user) {
         User foundUser = findUserById(id);
         if(foundUser != null){
             foundUser.setFirstName(user.getFirstName());
@@ -44,7 +47,7 @@ public class UserRepositoryImpl implements UserRepository{
     }
 
     @Override
-    public Boolean deleteHotel(String id) {
+    public Boolean deleteUser(String id) {
         User foundUser = findUserById(id);
         if(foundUser != null){
             userMongoRepository.deleteById(id);

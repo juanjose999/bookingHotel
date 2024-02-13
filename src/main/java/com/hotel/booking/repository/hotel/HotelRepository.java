@@ -6,9 +6,9 @@ import com.hotel.booking.model.Hotel;
 import java.util.List;
 
 public interface HotelRepository {
-    List<Hotel> getAllHotel();
+    List<Hotel> getAllHotels();
     Hotel findHotelById(String idHotel);
-    Hotel saveBooking(Hotel hotel);
+    Hotel saveHotel(Hotel hotel);
     Boolean updateHotel(String id, Hotel hotel);
     Boolean deleteHotel(String id);
 }

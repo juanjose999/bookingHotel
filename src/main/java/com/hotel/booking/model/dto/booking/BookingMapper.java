@@ -4,7 +4,7 @@ import com.hotel.booking.model.Booking;
 
 public class BookingMapper {
 
-    public static BookingResponseDto booking_To_BookingResponseDto(Booking booking){
+    public static BookingResponseDto bookingToBookingResponseDto(Booking booking){
         return new BookingResponseDto(
                 booking.getNameHotel(),
                 booking.getIdBooking(),
@@ -14,10 +14,9 @@ public class BookingMapper {
         );
     }
 
-    public static Booking bookingDto_To_Booking(BookingDto bookingDto){
+    public static Booking bookingDtoToBooking(BookingDto bookingDto){
         return new Booking(
                 bookingDto.getNameHotel(),
-                bookingDto.getIdBooking(),
                 bookingDto.getRegistrationStartDate(),
                 bookingDto.getRegistrationEndDate(),
                 bookingDto.getIdUser()

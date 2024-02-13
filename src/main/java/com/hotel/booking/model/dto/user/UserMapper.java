@@ -4,7 +4,7 @@ import com.hotel.booking.model.User;
 
 public class UserMapper {
 
-    public static UserResponseDto user_To_UserResponseDto(User user){
+    public static UserResponseDto userToUserResponseDto(User user){
         return new UserResponseDto(
                 user.getFirstName(),
                 user.getLastName(),
@@ -12,9 +12,8 @@ public class UserMapper {
         );
     }
 
-    public static User userDto_To_User(UserDto userDto){
+    public static User userDtoToUser(UserDto userDto){
         return new User(
-                userDto.getIdUser(),
                 userDto.getFirstName(),
                 userDto.getLastName(),
                 userDto.getPhoneCel(),

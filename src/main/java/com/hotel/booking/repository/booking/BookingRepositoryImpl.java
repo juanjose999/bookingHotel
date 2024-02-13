@@ -9,16 +9,22 @@ import java.util.List;
 import java.util.Optional;
 @Repository
 public class BookingRepositoryImpl implements BookingRepository{
+    private final BookingMongoRepository bookingMongoRepository;
+
     @Autowired
-    private BookingMongoRepository bookingMongoRepository;
+    public BookingRepositoryImpl(BookingMongoRepository bookingMongoRepository) {
+        this.bookingMongoRepository = bookingMongoRepository;
+    }
+
     @Override
-    public List<Booking> getAllBooking() {
+    public List<Booking> getAllBookings() {
         return bookingMongoRepository.findAll();
     }
 
     @Override
     public Booking findBookingById(String idBooking) {
-        return bookingMongoRepository.findById(idBooking).get();
+       Optional<Booking> optionalBooking = bookingMongoRepository.findById(idBooking);
+       return optionalBooking.orElse(null);
     }
 
     @Override
@@ -28,12 +34,12 @@ public class BookingRepositoryImpl implements BookingRepository{
 
     @Override
     public Boolean updateBooking(String id, Booking booking) {
-        Booking foundBooking = findBookingById(id);
-        if(foundBooking != null){
+        Optional<Booking> optionalFoundBooking = bookingMongoRepository.findById(id);
+        if (optionalFoundBooking.isPresent()) {
+            Booking foundBooking = optionalFoundBooking.get();
             foundBooking.setNameHotel(booking.getNameHotel());
             foundBooking.setRegistrationStartDate(booking.getRegistrationStartDate());
             foundBooking.setRegistrationEndDate(booking.getRegistrationEndDate());
-
             bookingMongoRepository.save(foundBooking);
             return true;
         }
@@ -42,8 +48,8 @@ public class BookingRepositoryImpl implements BookingRepository{
 
     @Override
     public Boolean deleteBooking(String id) {
-        Booking foundBooking = findBookingById(id);
-        if(foundBooking != null){
+        Optional<Booking> optionalBooking = bookingMongoRepository.findById(id);
+        if(optionalBooking.isPresent()){
             bookingMongoRepository.deleteById(id);
             return true;
         }

@@ -12,32 +12,35 @@ import java.util.List;
 @Service
 public class HotelServiceImpl implements HotelService{
 
+    private final HotelRepository hotelRepository;
     @Autowired
-    private HotelRepository hotelRepository;
+    public HotelServiceImpl(HotelRepository hotelRepository){
+        this.hotelRepository=hotelRepository;
+    }
     @Override
-    public List<HotelResponseDto> getAllHotel() {
+    public List<HotelResponseDto> getAllHotels() {
         List<HotelResponseDto> hotelResponseDtos = new ArrayList<>();
-        hotelRepository.getAllHotel().forEach(hotel -> hotelResponseDtos.add(HotelMapper.hotel_To_HotelResponseDto(hotel)));
+        hotelRepository.getAllHotels().forEach(hotel -> hotelResponseDtos.add(HotelMapper.hotelToHotelResponseDto(hotel)));
         return hotelResponseDtos;
     }
 
     @Override
     public HotelResponseDto findHotelById(String idHotel) {
-        return HotelMapper.hotel_To_HotelResponseDto(hotelRepository.findHotelById(idHotel));
+        return HotelMapper.hotelToHotelResponseDto(hotelRepository.findHotelById(idHotel));
     }
 
     @Override
-    public HotelResponseDto saveBooking(HotelDto hotelDto) {
-        return HotelMapper.hotel_To_HotelResponseDto(hotelRepository.saveBooking(HotelMapper.hotelDto_To_Hotel(hotelDto)));
+    public HotelResponseDto saveHotel(HotelDto hotelDto) {
+        return HotelMapper.hotelToHotelResponseDto(hotelRepository.saveHotel(HotelMapper.hotelDtoToHotel(hotelDto)));
     }
 
     @Override
     public Boolean updateHotel(String id, HotelDto hotelDto) {
-        return hotelRepository.updateHotel(id, HotelMapper.hotelDto_To_Hotel(hotelDto));
+        return hotelRepository.updateHotel(id, HotelMapper.hotelDtoToHotel(hotelDto));
     }
 
     @Override
-    public Boolean deleteHotel(String id) {
-        return hotelRepository.deleteHotel(id);
+    public Boolean deleteHotel(String idHotel) {
+        return hotelRepository.deleteHotel(idHotel);
     }
 }

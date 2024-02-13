@@ -5,6 +5,7 @@ import com.hotel.booking.model.dto.user.UserDto;
 import com.hotel.booking.model.dto.user.UserMapper;
 import com.hotel.booking.model.dto.user.UserResponseDto;
 import com.hotel.booking.repository.user.UserRepository;
+import com.hotel.booking.repository.user.UserRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,30 +13,33 @@ import java.util.ArrayList;
 import java.util.List;
 @Service
 public class UserServiceImpl implements UserService{
+    private final UserRepository userRepository;
     @Autowired
-    private UserRepository userRepository;
+    public UserServiceImpl(UserRepository userRepository){
+        this.userRepository=userRepository;
+    }
 
     @Override
-    public List<UserResponseDto> getAllUser() {
+    public List<UserResponseDto> getAllUsers() {
         List<UserResponseDto> userResponseDtos = new ArrayList<>();
-        userRepository.getAllUser().forEach(user -> userResponseDtos.add(UserMapper.user_To_UserResponseDto(user)));
+        userRepository.getAllUsers().forEach(user -> userResponseDtos.add(UserMapper.userToUserResponseDto(user)));
         return userResponseDtos;
     }
 
     @Override
     public UserResponseDto findUserById(String id) {
-        return UserMapper.user_To_UserResponseDto(userRepository.findUserById(id));
+        return UserMapper.userToUserResponseDto(userRepository.findUserById(id));
     }
 
     @Override
     public UserResponseDto saveUser(UserDto userDto) {
-        return UserMapper.user_To_UserResponseDto(userRepository.saveUser(UserMapper.userDto_To_User(userDto)));
+        return UserMapper.userToUserResponseDto(userRepository.saveUser(UserMapper.userDtoToUser(userDto)));
     }
 
 
     @Override
     public Boolean updateUser(String id, UserDto userDto) {
-        return userRepository.updateUser(id, UserMapper.userDto_To_User(userDto));
+        return userRepository.updateUser(id, UserMapper.userDtoToUser(userDto));
     }
 
     @Override

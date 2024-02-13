@@ -12,29 +12,31 @@ import java.util.ArrayList;
 import java.util.List;
 @Service
 public class BookingServiceImpl implements BookingService{
-
+    private final BookingRepository bookingRepository;
     @Autowired
-    private BookingRepository bookingRepository;
+    public  BookingServiceImpl(BookingRepository bookingRepository){
+        this.bookingRepository=bookingRepository;
+    }
     @Override
-    public List<BookingResponseDto> getAllBooking() {
+    public List<BookingResponseDto> getAllBookings() {
         List<BookingResponseDto> bookingResponseDtos = new ArrayList<>();
-        bookingRepository.getAllBooking().forEach(booking -> bookingResponseDtos.add(BookingMapper.booking_To_BookingResponseDto(booking)));
+        bookingRepository.getAllBookings().forEach(booking -> bookingResponseDtos.add(BookingMapper.bookingToBookingResponseDto(booking)));
         return bookingResponseDtos;
     }
 
     @Override
     public BookingResponseDto findBookingById(String idBooking) {
-        return BookingMapper.booking_To_BookingResponseDto(bookingRepository.findBookingById(idBooking));
+        return BookingMapper.bookingToBookingResponseDto(bookingRepository.findBookingById(idBooking));
     }
 
     @Override
     public BookingResponseDto saveBooking(BookingDto bookingDto) {
-        return BookingMapper.booking_To_BookingResponseDto(bookingRepository.saveBooking(BookingMapper.bookingDto_To_Booking(bookingDto)));
+        return BookingMapper.bookingToBookingResponseDto(bookingRepository.saveBooking(BookingMapper.bookingDtoToBooking(bookingDto)));
     }
 
     @Override
-    public Boolean updateBooking(String id, BookingDto bookingDto) {
-        return bookingRepository.updateBooking(id, BookingMapper.bookingDto_To_Booking(bookingDto));
+    public Boolean updateBooking(String idBooking, BookingDto bookingDto) {
+        return bookingRepository.updateBooking(idBooking, BookingMapper.bookingDtoToBooking(bookingDto));
     }
 
     @Override
