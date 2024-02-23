@@ -9,12 +9,8 @@ import java.util.List;
 import java.util.Optional;
 @Repository
 public class BookingRepositoryImpl implements BookingRepository{
-    private final BookingMongoRepository bookingMongoRepository;
-
     @Autowired
-    public BookingRepositoryImpl(BookingMongoRepository bookingMongoRepository) {
-        this.bookingMongoRepository = bookingMongoRepository;
-    }
+    private BookingMongoRepository bookingMongoRepository;
 
     @Override
     public List<Booking> getAllBookings() {

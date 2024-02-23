@@ -21,4 +21,6 @@ public class BookingDto {
         this.registrationEndDate = registrationEndDate;
         this.idUser = idUser;
     }
+
+    public BookingDto(){}
 }
