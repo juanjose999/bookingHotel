@@ -1,10 +1,9 @@
 package com.hotel.booking.service;
 
-import com.hotel.booking.model.Booking;
-import com.hotel.booking.model.dto.booking.BookingDto;
-import com.hotel.booking.model.dto.booking.BookingResponseDto;
+import com.hotel.booking.model.booking.Booking;
+import com.hotel.booking.dto.booking.BookingDto;
+import com.hotel.booking.dto.booking.BookingResponseDto;
 import com.hotel.booking.repository.booking.BookingRepository;
-import com.hotel.booking.service.booking.BookingService;
 import com.hotel.booking.service.booking.BookingServiceImpl; // Import the concrete implementation
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

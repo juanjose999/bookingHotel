@@ -1,5 +1,8 @@
-package com.hotel.booking.model;
+package com.hotel.booking.model.booking;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.hotel.booking.model.hotel.Hotel;
+import com.hotel.booking.model.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,7 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -30,7 +33,14 @@ public class Booking implements Serializable {
         this.registrationEndDate = registrationEndDate;
         this.idUser = idUser;
     }
+    public void setUser(User user) {
+        this.user = user;
+        if (!user.getBookingsList().contains(this)) {
+            user.getBookingsList().add(this);
+        }
+    }
     @DBRef
+    @JsonIgnore
     private User user;
 
     @DBRef

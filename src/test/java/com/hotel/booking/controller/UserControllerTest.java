@@ -1,5 +1,6 @@
 package com.hotel.booking.controller;
-import com.hotel.booking.model.dto.user.UserResponseDto;
+import com.hotel.booking.controller.user.UserController;
+import com.hotel.booking.dto.user.UserResponseDto;
 import com.hotel.booking.service.user.UserService;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

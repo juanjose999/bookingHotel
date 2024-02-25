@@ -1,7 +1,7 @@
-package com.hotel.booking.controller;
+package com.hotel.booking.controller.user;
 
-import com.hotel.booking.model.dto.user.UserDto;
-import com.hotel.booking.model.dto.user.UserResponseDto;
+import com.hotel.booking.dto.user.UserDto;
+import com.hotel.booking.dto.user.UserResponseDto;
 import com.hotel.booking.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

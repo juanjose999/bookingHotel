@@ -1,6 +1,6 @@
-package com.hotel.booking.model.dto.hotel;
+package com.hotel.booking.dto.hotel;
 
-import com.hotel.booking.model.Hotel;
+import com.hotel.booking.model.hotel.Hotel;
 
 public class HotelMapper {
 

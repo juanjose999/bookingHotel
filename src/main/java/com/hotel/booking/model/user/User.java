@@ -1,5 +1,6 @@
-package com.hotel.booking.model;
+package com.hotel.booking.model.user;
 
+import com.hotel.booking.model.booking.Booking;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -22,22 +23,31 @@ public class User implements Serializable {
 
     @Id
     private String idUser;
+
     private String firstName;
     private String lastName;
-    private String phoneCel;
-    private String idCard;
+    private String email;
+    private String password;
     private LocalDate registrationDate;
-    private StatusBooking statusBooking;
+    private String nameHotel;
+    private LocalDate registrationStartDate;
+    private LocalDate registrationEndDate;
 
-    @DBRef
-    private List<Booking> bookingList;
-
-    public User(String firstName, String lastName, String phoneCel, String idCard, LocalDate registrationDate, StatusBooking statusBooking) {
+    @DBRef(lazy = false)
+    private List<Booking> bookingsList;
+    public User(String firstName, String lastName, String email, String password, LocalDate registrationDate, List<Booking> bookingsList) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.phoneCel = phoneCel;
-        this.idCard = idCard;
+        this.email = email;
+        this.password = password;
         this.registrationDate = registrationDate;
-        this.statusBooking = statusBooking;
     }
+
+    public void addBooking(Booking booking) {
+        if (bookingsList == null) {
+            bookingsList = new ArrayList<>();
+        }
+        bookingsList.add(booking);
+    }
+
 }

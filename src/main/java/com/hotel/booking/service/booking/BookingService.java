@@ -1,9 +1,7 @@
 package com.hotel.booking.service.booking;
 
-import com.hotel.booking.model.Booking;
-import com.hotel.booking.model.dto.booking.BookingDto;
-import com.hotel.booking.model.dto.booking.BookingResponseDto;
-import com.hotel.booking.repository.booking.BookingRepository;
+import com.hotel.booking.dto.booking.BookingDto;
+import com.hotel.booking.dto.booking.BookingResponseDto;
 
 import java.util.List;
 

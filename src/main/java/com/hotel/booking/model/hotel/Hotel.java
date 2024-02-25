@@ -1,8 +1,8 @@
-package com.hotel.booking.model;
+package com.hotel.booking.model.hotel;
 
+import com.hotel.booking.model.booking.Booking;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;

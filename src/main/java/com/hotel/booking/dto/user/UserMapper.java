@@ -1,6 +1,6 @@
-package com.hotel.booking.model.dto.user;
+package com.hotel.booking.dto.user;
 
-import com.hotel.booking.model.User;
+import com.hotel.booking.model.user.User;
 
 public class UserMapper {
 
@@ -8,7 +8,9 @@ public class UserMapper {
         return new UserResponseDto(
                 user.getFirstName(),
                 user.getLastName(),
-                user.getStatusBooking()
+                user.getEmail(),
+                user.getPassword(),
+                user.getBookingsList()
         );
     }
 
@@ -16,10 +18,10 @@ public class UserMapper {
         return new User(
                 userDto.getFirstName(),
                 userDto.getLastName(),
-                userDto.getPhoneCel(),
-                userDto.getIdCard(),
+                userDto.getEmail(),
+                userDto.getPassword(),
                 userDto.getRegistrationDate(),
-                userDto.getStatusBooking()
+                userDto.getBookingsList()
         );
     }
 }

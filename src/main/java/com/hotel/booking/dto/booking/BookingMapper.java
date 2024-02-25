@@ -1,6 +1,6 @@
-package com.hotel.booking.model.dto.booking;
+package com.hotel.booking.dto.booking;
 
-import com.hotel.booking.model.Booking;
+import com.hotel.booking.model.booking.Booking;
 
 public class BookingMapper {
 

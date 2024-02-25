@@ -1,16 +1,19 @@
-package com.hotel.booking.model.dto.user;
+package com.hotel.booking.dto.user;
 
-import com.hotel.booking.model.StatusBooking;
+import com.hotel.booking.model.booking.Booking;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class UserResponseDto {
     private String firstName;
     private String lastName;
-    private StatusBooking statusBooking;
+    private String email;
+    private String password;
+    private List<Booking> bookingsList;
 }

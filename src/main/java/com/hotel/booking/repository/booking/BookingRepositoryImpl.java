@@ -1,6 +1,6 @@
 package com.hotel.booking.repository.booking;
 
-import com.hotel.booking.model.Booking;
+import com.hotel.booking.model.booking.Booking;
 import com.hotel.booking.repository.booking.mongo.BookingMongoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

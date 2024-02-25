@@ -1,8 +1,8 @@
 package com.hotel.booking.service.hotel;
 
-import com.hotel.booking.model.dto.hotel.HotelDto;
-import com.hotel.booking.model.dto.hotel.HotelMapper;
-import com.hotel.booking.model.dto.hotel.HotelResponseDto;
+import com.hotel.booking.dto.hotel.HotelDto;
+import com.hotel.booking.dto.hotel.HotelMapper;
+import com.hotel.booking.dto.hotel.HotelResponseDto;
 import com.hotel.booking.repository.hotel.HotelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

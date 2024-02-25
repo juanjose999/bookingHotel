@@ -1,6 +1,6 @@
 package com.hotel.booking.repository.booking;
 
-import com.hotel.booking.model.Booking;
+import com.hotel.booking.model.booking.Booking;
 
 import java.util.List;
 

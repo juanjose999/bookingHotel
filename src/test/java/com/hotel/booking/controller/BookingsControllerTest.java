@@ -1,7 +1,8 @@
 package com.hotel.booking.controller;
 
-import com.hotel.booking.model.dto.booking.BookingDto;
-import com.hotel.booking.model.dto.booking.BookingResponseDto;
+import com.hotel.booking.controller.bookings.BookingsController;
+import com.hotel.booking.dto.booking.BookingDto;
+import com.hotel.booking.dto.booking.BookingResponseDto;
 import com.hotel.booking.service.booking.BookingService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

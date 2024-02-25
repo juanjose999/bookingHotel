@@ -1,12 +1,11 @@
 package com.hotel.booking.repository.hotel;
 
-import com.hotel.booking.model.Hotel;
+import com.hotel.booking.model.hotel.Hotel;
 import com.hotel.booking.repository.hotel.mongo.HotelMongoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public class HotelRepositoryImpl implements HotelRepository {

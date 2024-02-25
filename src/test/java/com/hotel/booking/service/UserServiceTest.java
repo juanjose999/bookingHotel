@@ -1,8 +1,7 @@
 package com.hotel.booking.service;
-import com.hotel.booking.model.User;
-import com.hotel.booking.model.dto.user.UserDto;
-import com.hotel.booking.model.dto.user.UserMapper;
-import com.hotel.booking.model.dto.user.UserResponseDto;
+import com.hotel.booking.model.user.User;
+import com.hotel.booking.dto.user.UserDto;
+import com.hotel.booking.dto.user.UserResponseDto;
 import com.hotel.booking.repository.user.UserRepository;
 import com.hotel.booking.service.user.UserServiceImpl;
 import org.junit.Before;

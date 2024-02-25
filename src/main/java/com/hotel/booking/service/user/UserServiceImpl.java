@@ -1,22 +1,36 @@
 package com.hotel.booking.service.user;
 
-import com.hotel.booking.model.User;
-import com.hotel.booking.model.dto.user.UserDto;
-import com.hotel.booking.model.dto.user.UserMapper;
-import com.hotel.booking.model.dto.user.UserResponseDto;
+import com.hotel.booking.model.booking.Booking;
+import com.hotel.booking.model.user.User;
+import com.hotel.booking.dto.user.UserDto;
+import com.hotel.booking.dto.user.UserMapper;
+import com.hotel.booking.dto.user.UserResponseDto;
+import com.hotel.booking.repository.booking.BookingRepository;
 import com.hotel.booking.repository.user.UserRepository;
-import com.hotel.booking.repository.user.UserRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 @Service
 public class UserServiceImpl implements UserService{
     private final UserRepository userRepository;
     @Autowired
+    private BookingRepository bookingRepository;
+
+    @Autowired
     public UserServiceImpl(UserRepository userRepository){
         this.userRepository=userRepository;
+    }
+
+    @Override
+    public User findByEmail(String email) {
+        User userFound = userRepository.findByEmail(email).get();
+        if (userFound != null){
+            return userFound;
+        }
+        return null;
     }
 
     @Override
@@ -33,7 +47,22 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public UserResponseDto saveUser(UserDto userDto) {
-        return UserMapper.userToUserResponseDto(userRepository.saveUser(UserMapper.userDtoToUser(userDto)));
+        User user = UserMapper.userDtoToUser(userDto);
+
+        // Guardar User en su repositorio
+        User savedUser = userRepository.saveUser(user);
+
+        // Crear Booking asociada al User
+        Booking newBooking = new Booking("agregado desde intelige", LocalDate.now(), LocalDate.now().plusDays(5), savedUser.getIdUser());
+        newBooking.setUser(savedUser); // Establecer la relación bidireccional
+        bookingRepository.saveBooking(newBooking);
+
+        // Agregar la Booking al User y actualizar en su repositorio
+        savedUser.getBookingsList().add(newBooking);
+        userRepository.updateUser(savedUser.getIdUser(), savedUser);
+
+        // Mapear el resultado a UserResponseDto y devolverlo
+        return UserMapper.userToUserResponseDto(savedUser);
     }
 
 

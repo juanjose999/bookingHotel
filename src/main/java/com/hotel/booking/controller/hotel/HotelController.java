@@ -1,13 +1,8 @@
 package com.hotel.booking.controller;
 
 
-import com.hotel.booking.model.dto.booking.BookingDto;
-import com.hotel.booking.model.dto.booking.BookingResponseDto;
-import com.hotel.booking.model.dto.hotel.HotelDto;
-import com.hotel.booking.model.dto.hotel.HotelResponseDto;
-import com.hotel.booking.service.booking.BookingService;
-import com.hotel.booking.model.dto.hotel.HotelDto;
-import com.hotel.booking.model.dto.hotel.HotelResponseDto;
+import com.hotel.booking.dto.hotel.HotelDto;
+import com.hotel.booking.dto.hotel.HotelResponseDto;
 import com.hotel.booking.service.hotel.HotelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
